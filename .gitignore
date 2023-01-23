@@ -3,6 +3,7 @@
 dataset/
 **/lightning_logs/
 submission.csv
+*.pth
 
 ### macOS ###
 # General
