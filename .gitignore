@@ -2,6 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,macos,python
 dataset/
 **/lightning_logs/
+submission.csv
 
 ### macOS ###
 # General
