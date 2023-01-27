@@ -32,6 +32,12 @@ y = x.view((2, 3))
 > .reshape()와 동일하게 shape을 바꿔주지만, .view()는 메모리를 공유한다.  
 > 즉, 위 코드에서 y를 변경하면 x도 변경된다.  
 > 말 그대로 view만 변경
+> 
+> --- 
+>  
+> <pre>It means that torch.reshape may return a copy or a view of the original tensor. You can not count on that to return a view or a copy. According to the developer:</pre>  
+> reshape가 copy()한다는 보장이 없다:exclamation:  
+> 복사본이 필요하다면 clone()을 이용하도록 하자.  
 
 ## :point_right: device 설정할 때, 몇 번 기기를 사용할 것인지 특정할 수 있다.
 ``` python
@@ -50,7 +56,7 @@ y = x.cpu()
 > cpu가 아닌 device에 저장된 tensor에 사용하면 Error  
 > ```y.cpu().numpy()``` 이렇게 이용하도록 하자.
 
-## :point_Right: .item()을 이용해 스칼라 값을 읽을 수 있다.
+## :point_right: .item()을 이용해 스칼라 값을 읽을 수 있다.
 ``` python
 x = torch.tensor([1])
 x.item()
@@ -67,6 +73,12 @@ x = torch.tensor([
 y = x.transpose(0, 1)  # shape == (3, 2)
 y = torch.transpose(x, 0, 1)
 ```
+> view처럼 transpose도 input과 메모리를 공유한다:exclamation:  
+> 하지만 view는 contiguous tensor에서만 사용할 수 있다. (반환도 contiguous)  
+>> 많은 tensor operations들이 contiguous를 전제로 하기 때문에, contiguous 하지 않으면 오류가 나는 경우도 있다.  
+>> contiguous()를 이용할 수 있다.  
+> 
+> [참고 링크](https://jdhao.github.io/2019/07/10/pytorch_view_reshape_transpose_permute/)
 
 ## :point_right: .permute()를 이용해서 차원의 순서를 직접 지정할 수 있다.
 ``` python
