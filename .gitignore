@@ -4,6 +4,7 @@ dataset/
 **/lightning_logs/
 submission.csv
 *.pth
+*.ckpt
 
 ### macOS ###
 # General
