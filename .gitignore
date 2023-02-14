@@ -5,6 +5,7 @@ dataset/
 submission.csv
 *.pth
 *.ckpt
+*.smmx
 
 ### macOS ###
 # General
